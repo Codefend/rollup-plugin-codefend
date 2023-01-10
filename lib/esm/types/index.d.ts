@@ -1,10 +1,5 @@
-export default function (options: ICodefendRollupPluginOptions): {
+export declare const codefend: (options: any) => {
     name: string;
-    transform(code: string): any;
+    transform(code: string): string;
 };
-interface ICodefendRollupPluginOptions {
-    debug: boolean;
-    prefix: string;
-}
-export {};
 //# sourceMappingURL=index.d.ts.map

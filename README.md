@@ -21,25 +21,25 @@ Add to your `rollup.config.js`:
 #### Default options
 
 ```js
-import Codefend from "rollup-plugin-codefend";// <-----
+import { codefend } from "rollup-plugin-codefend";
 
 export default {
   input:...,
   output: ...,
-  plugins: [Codefend()],// <----
+  plugins: [codefend()],
 };
 ```
 
 #### Custom options
 
 ```js
-import Codefend from "rollup-plugin-codefend";  // <-----
+import { codefend } from "rollup-plugin-codefend";
 
 export default {
   input: ...,
   output: ...,
   plugins: [
-    Codefend({// <-----
+    codefend({
       /** debug: boolean
        * For additional logs
        */

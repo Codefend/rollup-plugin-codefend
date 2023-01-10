@@ -1,4 +1,4 @@
-const Codefend = require("../dist/rollup-plugin-codefend.cjs");
+const { codefend } = require("../lib/cjs/index");
 module.exports = {
   input: "src/main.js",
   output: {
@@ -6,7 +6,7 @@ module.exports = {
     format: "cjs",
   },
   plugins: [
-    Codefend({
+    codefend({
       debug: true,
       prefix: "Ox",
       predefinedWords: [
