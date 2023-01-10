@@ -14,9 +14,11 @@ npm install -D rollup-plugin-codefend
 
 ## Usage
 
+### `Step 1`: Configuration
+
 Add to your `rollup.config.js`:
 
-### Default options
+#### Default options
 
 ```js
 import Codefend from "rollup-plugin-codefend";
@@ -31,7 +33,7 @@ export default {
 };
 ```
 
-### Custom options
+#### Custom options
 
 Add to your `rollup.config.js`:
 
@@ -89,6 +91,65 @@ export default {
     }),
   ],
 };
+```
+
+### `Step 2`: Naming convention
+
+`In your code, add prefixes to the words that you want to encrypt.`
+
+`Make sure to read the `[`Philosophy`](https://github.com/Codefend/core#philosophy)` behind Codefend obfuscation First to understand why Codefend can work with any code written in any language.`
+
+```js
+//node js example
+//as a starting point:  prefix the words that should be encrypted with l_
+
+class l_Calculator {
+  l_sum(l_a, l_b) {
+    const l_results = l_a + l_b;
+    return l_results;
+  }
+}
+
+//>>>>>>==== Will Become ======<<<<<<
+
+class Ox0 {
+  Ox1(Ox2, Ox3) {
+    const Ox4 = Ox2 + Ox3;
+    return Ox4;
+  }
+}
+```
+
+```html
+<!-- Html example, can work also with Angular,React,Vue,Svelte... in the same way -->
+
+<html>
+  <head>
+    <style>
+      .l_red {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="l_red">l_secret</div>
+  </body>
+</html>
+
+<!-- Will Become -->
+
+<html>
+  <head>
+    <style>
+      .Ox1 {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="Ox1">Ox0</div>
+  </body>
+</html>
 ```
 
 ## Contributing
