@@ -52,5 +52,8 @@
   },
   "dependencies": {
     "codefend": "^1.5.3"
+  },
+  "peerDependencies": {
+    "rollup": "^3.0.0"
   }
 }
