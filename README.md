@@ -21,33 +21,25 @@ Add to your `rollup.config.js`:
 #### Default options
 
 ```js
-import Codefend from "rollup-plugin-codefend";
+import Codefend from "rollup-plugin-codefend";// <-----
 
 export default {
-  input: "src/main.js",
-  output: {
-    file: "dist/bundle.js",
-    format: "cjs",
-  },
-  plugins: [Codefend()],
+  input:...,
+  output: ...,
+  plugins: [Codefend()],// <----
 };
 ```
 
 #### Custom options
 
-Add to your `rollup.config.js`:
-
 ```js
-import Codefend from "rollup-plugin-codefend";
+import Codefend from "rollup-plugin-codefend";  // <-----
 
 export default {
-  input: "src/main.js",
-  output: {
-    file: "dist/bundle.js",
-    format: "cjs",
-  },
+  input: ...,
+  output: ...,
   plugins: [
-    Codefend({
+    Codefend({// <-----
       /** debug: boolean
        * For additional logs
        */
@@ -95,7 +87,7 @@ export default {
 
 ### `Step 2`: Naming convention
 
-`In your code, add prefixes to the words that you want to encrypt.`
+In your code, `add prefixes to the words that you want Codefend to encrypt.`
 
 `Make sure to read the `[`Philosophy`](https://github.com/Codefend/core#philosophy)` behind Codefend obfuscation First to understand why Codefend can work with any code written in any language.`
 
@@ -133,6 +125,7 @@ class Ox0 {
   </head>
   <body>
     <div class="l_red">l_secret</div>
+    <div class="l_red">Hello World</div>
   </body>
 </html>
 
@@ -148,6 +141,7 @@ class Ox0 {
   </head>
   <body>
     <div class="Ox1">Ox0</div>
+    <div class="Ox1">Hello World</div>
   </body>
 </html>
 ```
