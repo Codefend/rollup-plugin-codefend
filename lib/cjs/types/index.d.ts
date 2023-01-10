@@ -1,4 +1,5 @@
-export declare const codefend: (options: any) => {
+import { ICodefendRollupPluginOptions } from "./models";
+export declare const codefend: (options: ICodefendRollupPluginOptions) => {
     name: string;
     transform(code: string): string;
 };
