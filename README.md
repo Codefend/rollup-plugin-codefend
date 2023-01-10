@@ -4,6 +4,8 @@
 
 # rollup-plugin-codefend
 
+Rollup plugin for code obfuscation based on [Codefend](https://www.npmjs.com/package/codefend)
+
 ## Installation
 
 ```bash
@@ -14,7 +16,7 @@ npm install -D rollup-plugin-codefend
 
 Add to your `rollup.config.js`:
 
-### default options
+### Default options
 
 ```js
 import Codefend from "rollup-plugin-codefend";
@@ -29,7 +31,7 @@ export default {
 };
 ```
 
-### custom options
+### Custom options
 
 Add to your `rollup.config.js`:
 
