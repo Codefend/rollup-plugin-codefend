@@ -1,0 +1,9 @@
+{
+  "name": "rollup-plugin-codefend-example",
+  "scripts": {
+    "build": "rollup --config"
+  },
+  "devDependencies": {
+    "rollup": "^3.9.1"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "rollup-plugin-codefend",
+  "version": "1.0.0",
+  "description": "Rollup plugin for code obfuscation based on Codefend",
+  "keywords": [
+    "rollup",
+    "rollup-plugin",
+    "codefend",
+    "obfuscation",
+    "obfuscator",
+    "uglify",
+    "uglifier"
+  ],
+  "homepage": "https://github.com/Codefend/rollup-plugin-codefend.git",
+  "bugs": {
+    "url": "https://github.com/Codefend/rollup-plugin-codefend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Codefend/rollup-plugin-codefend.git"
+  },
+  "author": "Mounzer Adas",
+  "license": "MIT",
+  "files": [
+    "lib/**/*"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./lib/esm/types/index.d.ts",
+        "default": "./lib/esm/index.mjs"
+      },
+      "require": {
+        "types": "./lib/cjs/types/index.d.ts",
+        "default": "./lib/cjs/index.js"
+      }
+    }
+  },
+  "types": "./lib/cjs/types/index.d.ts",
+  "main": "./lib/cjs/index.js",
+  "scripts": {
+    "clean": "rimraf -rf ./lib",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs",
+    "build:esm": "tsc -p ./tsconfig.esm.json && move-cli lib/esm/index.js lib/esm/index.mjs",
+    "build:cjs": "tsc -p ./tsconfig.cjs.json",
+    "prepack": "npm run build"
+  },
+  "devDependencies": {
+    "move-cli": "^2.0.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "codefend": "^1.5.3"
+  }
+}
