@@ -148,7 +148,7 @@ class Ox0 {
 
 ## Examples
 
-1. ### [`Basic`](./example)
+1. ### [`Node js`](./example)
 
 ## Contributing
 

@@ -8,5 +8,5 @@ export default function () {
   const l_results = l_calculator.f_sum(2, 3);
   console.log("secret: ", secret);
   console.log("results: ", l_results);
-  console.log("node_modules:", node_modules, "(should stay the same) (added to ignoredWords)");
+  console.log("node_modules:", node_modules, "should stay 'node_modules' because it was added to 'ignoredWords' in rollup.config.js");
 }
