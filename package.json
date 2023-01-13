@@ -51,7 +51,7 @@
     "typescript": "^4.9.4"
   },
   "dependencies": {
-    "codefend": "^1.5.3"
+    "codefend": "^1.6.0"
   },
   "peerDependencies": {
     "rollup": "^3.0.0"
