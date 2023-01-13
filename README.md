@@ -98,6 +98,7 @@ In your code, `add prefixes to the words that you want Codefend to encrypt.`
 class l_Calculator {
   l_sum(l_a, l_b) {
     const l_results = l_a + l_b;
+    console.log("node_modules");
     return l_results;
   }
 }
@@ -107,6 +108,7 @@ class l_Calculator {
 class Ox0 {
   Ox1(Ox2, Ox3) {
     const Ox4 = Ox2 + Ox3;
+    console.log("node_modules"); // will not be obfuscated as it is added to ignoredWords in Codefend options
     return Ox4;
   }
 }
