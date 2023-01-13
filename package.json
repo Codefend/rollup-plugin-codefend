@@ -1,13 +1,15 @@
 {
   "name": "rollup-plugin-codefend",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Rollup plugin for code obfuscation based on Codefend",
   "keywords": [
     "rollup",
     "rollup-plugin",
     "codefend",
+    "obfuscate",
     "obfuscation",
     "obfuscator",
+    "uglification",
     "uglify",
     "uglifier"
   ],
