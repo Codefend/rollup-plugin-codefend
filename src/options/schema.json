@@ -1,0 +1,60 @@
+{
+  "title": "Codefend Plugin Options",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "debug": {
+      "type": "boolean",
+      "description": "Displays additional logs."
+    },
+    "prefix": {
+      "type": "string",
+      "description": "The prefix of each variable generated.",
+      "minLength": 1
+    },
+    "predefinedWords": {
+      "type": "array",
+      "description": "Words that you want to obfuscate them in a static way (determined output)",
+      "items": {
+        "type": "object",
+        "properties": {
+          "originalWord": {
+            "type": "string"
+          },
+          "targetWord": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ignoredWords": {
+      "type": "array",
+      "description": "Words that matches the pattern to be obfuscated but should be kept as is without being obfuscated.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "regexList": {
+      "type": "array",
+      "description": "Regex for detecting the words to be obfuscated",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": ""
+          },
+          "value": {
+            "type": "string",
+            "description": ""
+          },
+          "flat": {
+            "type": "string",
+            "description": "",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}
