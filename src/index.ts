@@ -1,27 +1,16 @@
-import { ICodefendRollupPluginOptions } from "./models";
-import { obfuscate, codefendDefaultOptions } from "codefend";
+import { OptionsBuilder } from "./options/builder";
+import { ICodefendPluginOptions } from "./options/models";
+import { obfuscate } from "codefend";
 
-export const codefend = (options: ICodefendRollupPluginOptions) => {
+export const codefend = (options: ICodefendPluginOptions) => {
+  const name = "rollup-plugin-codefend";
   const map: Record<string, string> = {};
-  const _options = getOptions(options);
+  const _options = new OptionsBuilder(name).setOptions(options).build();
 
   return {
-    name: "rollup-plugin-codefend",
+    name: name,
     transform(code: string) {
       return obfuscate(code, map, _options);
     },
   };
 };
-
-function getOptions(options: ICodefendRollupPluginOptions) {
-  options = options ?? {};
-  const debug = options.debug ?? codefendDefaultOptions.debug;
-
-  const obfuscationOptions = { ...codefendDefaultOptions.obfuscationOptions, ...(options as ICodefendRollupPluginOptions) };
-  delete obfuscationOptions["debug"];
-
-  return {
-    debug,
-    obfuscationOptions,
-  };
-}
