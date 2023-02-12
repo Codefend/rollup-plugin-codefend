@@ -1,8 +1,8 @@
-import { codefendDefaultOptions } from "codefend";
+import { IObfuscationOptions } from 'codefend/build/src/core/options';
+import { buildObfuscationOptions } from "codefend";
 import { validate } from "schema-utils";
 import schema from "./schema.json";
 import { JSONSchema7 } from "schema-utils/declarations/validate";
-import { ICodefendOptions } from "./models";
 
 export class OptionsBuilder {
   name: string;
@@ -14,8 +14,7 @@ export class OptionsBuilder {
   }
 
   setOptions(options: any) {
-    options = options ?? {};
-    this.options = { debug: codefendDefaultOptions.debug, ...codefendDefaultOptions.obfuscationOptions, ...options };
+    this.options = buildObfuscationOptions(options);
     return this;
   }
 
@@ -31,21 +30,12 @@ export class OptionsBuilder {
     return this;
   }
 
-  build(): ICodefendOptions {
+  build(): IObfuscationOptions {
     this.#validateOptions();
 
     this.additionalIgnoredWords.forEach((word) => {
       this.options.ignoredWords.push(word);
     });
-
-    const debug = this.options.debug;
-
-    const obfuscationOptions = { ...this.options };
-    delete obfuscationOptions["debug"];
-
-    return {
-      debug: debug,
-      obfuscationOptions: obfuscationOptions,
-    };
+    return this.options;
   }
 }
