@@ -40,10 +40,14 @@ export default {
   output: ...,
   plugins: [
     codefend({
-      /** debug: boolean
-       * Displays additional logs.
-       */
-      debug: true,
+      /** stats: boolean
+      * Displays detailed stats about the obfuscated words:
+      * e.g:
+      * Ignored node_modules (5 times)
+      * Predefined l_Hello -> l_Hi (2 times)
+      * Encrypted l_a -> Ox0 (15 times)
+      */
+      stats: true,
 
 
       /** prefix: string
