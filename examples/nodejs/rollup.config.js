@@ -1,4 +1,4 @@
-const { codefend } = require("../lib/cjs/index");
+const { codefend } = require("../../lib/cjs/index");
 module.exports = {
   input: "src/main.js",
   output: {
@@ -7,7 +7,7 @@ module.exports = {
   },
   plugins: [
     codefend({
-      debug: true,
+      stats: true,
       prefix: "Ox",
       predefinedWords: [
         {

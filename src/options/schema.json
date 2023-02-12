@@ -3,9 +3,9 @@
   "type": "object",
   "additionalProperties": false,
   "properties": {
-    "debug": {
+    "stats": {
       "type": "boolean",
-      "description": "Displays additional logs."
+      "description": "Displays detailed stats about the obfuscated words."
     },
     "prefix": {
       "type": "string",
