@@ -42,13 +42,9 @@
     "dist"
   ],
   "scripts": {
-    "clean": "rimraf ./lib",
-    "build": "tsup",
-    "prepack": "npm run build"
+    "build": "tsup"
   },
   "devDependencies": {
-    "move-cli": "^2.0.0",
-    "rimraf": "^4.1.2",
     "tsup": "^8.0.2",
     "typescript": "^5.4.5"
   },
