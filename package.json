@@ -38,7 +38,7 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "codefend": "^2.1.0",
+    "codefend": "^3.0.0",
     "schema-utils": "^4.0.0"
   },
   "peerDependencies": {
