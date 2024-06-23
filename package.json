@@ -11,7 +11,11 @@
     "obfuscator",
     "uglification",
     "uglify",
-    "uglifier"
+    "uglifier",
+    "vue",
+    "react",
+    "angular",
+    "svelte"
   ],
   "homepage": "https://github.com/Codefend/rollup-plugin-codefend.git",
   "bugs": {
@@ -43,5 +47,8 @@
   },
   "peerDependencies": {
     "rollup": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }

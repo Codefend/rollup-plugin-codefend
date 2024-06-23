@@ -4,6 +4,11 @@
 
 # rollup-plugin-codefend
 
+![NPM](https://img.shields.io/npm/dt/rollup-plugin-codefend)
+![Bundlephobia](https://img.shields.io/bundlephobia/min/rollup-plugin-codefend)
+![Node version](https://img.shields.io/node/v/rollup-plugin-codefend)
+![NPM](https://img.shields.io/npm/l/rollup-plugin-codefend)
+
 Rollup plugin for code obfuscation based on [Codefend](https://www.npmjs.com/package/codefend)
 
 ## Installation
