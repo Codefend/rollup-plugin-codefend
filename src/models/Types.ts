@@ -1,3 +1,11 @@
+import { IObfuscationOptions } from "codefend/build/src/core/options";
+
+export type IRollupCodefend = {
+  name: string;
+  transform(code: string): string;
+  generateBundle: () => void;
+  options: IObfuscationOptions;
+};
 export type IRollupCodefendOptions = {
   transformation?: {
     prefix?: string;

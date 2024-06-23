@@ -34,6 +34,7 @@
     "dist"
   ],
   "scripts": {
+    "test": "vitest",
     "build": "tsup",
     "prepack": "npm run build"
   },
@@ -43,7 +44,8 @@
   },
   "dependencies": {
     "codefend": "^2.1.0",
-    "schema-utils": "^4.0.0"
+    "schema-utils": "^4.0.0",
+    "vitest": "^1.6.0"
   },
   "peerDependencies": {
     "rollup": "^3.0.0"

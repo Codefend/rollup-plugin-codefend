@@ -4,34 +4,40 @@ import {
   IRegexListOption,
 } from "codefend/build/src/core/options";
 import { IRollupCodefendOptions } from "../models/Types";
+import {
+  DEFAULT_TRANSFORMATION_PREFIX,
+  DEFAULT_PARSER_REGEX_LIST,
+} from "../data/Constants";
 
 class OptionsAdapter {
-  transform(optionsV3: IRollupCodefendOptions): IObfuscationOptions {
+  transform(pluginOptions: IRollupCodefendOptions): IObfuscationOptions {
     return {
-      stats: this.stats(optionsV3),
-      prefix: this.prefix(optionsV3),
-      ignoredWords: this.ignoredWords(optionsV3),
-      predefinedWords: this.predefinedWords(optionsV3),
-      regexList: this.regexList(optionsV3),
+      stats: this.stats(pluginOptions),
+      prefix: this.prefix(pluginOptions),
+      ignoredWords: this.ignoredWords(pluginOptions),
+      predefinedWords: this.predefinedWords(pluginOptions),
+      regexList: this.regexList(pluginOptions),
     };
   }
 
-  private stats(optionsV3: IRollupCodefendOptions): boolean {
-    return optionsV3?.debug?.stats ?? true;
+  private stats(pluginOptions: IRollupCodefendOptions): boolean {
+    return pluginOptions?.debug?.stats ?? true;
   }
 
-  private prefix(optionsV3: IRollupCodefendOptions): string {
-    return optionsV3?.transformation?.prefix ?? "Ox";
+  private prefix(pluginOptions: IRollupCodefendOptions): string {
+    return (
+      pluginOptions?.transformation?.prefix ?? DEFAULT_TRANSFORMATION_PREFIX
+    );
   }
 
-  private ignoredWords(optionsV3: IRollupCodefendOptions): string[] {
-    return optionsV3?.transformation?.ignore ?? [];
+  private ignoredWords(pluginOptions: IRollupCodefendOptions): string[] {
+    return pluginOptions?.transformation?.ignore ?? [];
   }
   private predefinedWords(
-    optionsV3: IRollupCodefendOptions
+    pluginOptions: IRollupCodefendOptions
   ): IPredefinedWordOption[] {
     return (
-      optionsV3?.transformation?.static?.map(({ from, to }) => {
+      pluginOptions?.transformation?.static?.map(({ from, to }) => {
         return {
           originalWord: from,
           targetWord: to,
@@ -39,15 +45,15 @@ class OptionsAdapter {
       }) ?? []
     );
   }
-  private regexList(optionsV3: IRollupCodefendOptions): IRegexListOption[] {
+  private regexList(pluginOptions: IRollupCodefendOptions): IRegexListOption[] {
     return (
-      optionsV3?.parser?.regexList?.map((e) => {
+      pluginOptions?.parser?.regexList?.map((e) => {
         return {
           flag: "g",
           name: e.name,
           value: e.value,
         };
-      }) ?? []
+      }) ?? DEFAULT_PARSER_REGEX_LIST
     );
   }
 }
