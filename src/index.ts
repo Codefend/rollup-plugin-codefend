@@ -1,8 +1,8 @@
-import { OptionsBuilder } from "./options/builder";
+import { OptionsBuilder } from "./options/OptionsBuilder";
 import { buildRuntimeOptions, obfuscate, stats } from "codefend";
-import { IObfuscationOptions } from "codefend/build/src/core/options";
+import { IRollupCodefendOptions } from "./models/Types";
 
-export const codefend = (options: IObfuscationOptions) => {
+export const codefend = (options: IRollupCodefendOptions) => {
   const name = "rollup-plugin-codefend";
   const runtimeOptions = buildRuntimeOptions();
   const _options = new OptionsBuilder(name).setOptions(options).build();
