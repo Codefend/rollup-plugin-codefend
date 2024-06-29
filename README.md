@@ -4,6 +4,11 @@
 
 # rollup-plugin-codefend
 
+![NPM](https://img.shields.io/npm/dt/rollup-plugin-codefend)
+![Bundlephobia](https://img.shields.io/bundlephobia/min/rollup-plugin-codefend)
+![Node version](https://img.shields.io/node/v/rollup-plugin-codefend)
+![NPM](https://img.shields.io/npm/l/rollup-plugin-codefend)
+
 Rollup plugin for code obfuscation based on [Codefend](https://www.npmjs.com/package/codefend)
 
 ## Installation
@@ -40,54 +45,31 @@ export default {
   output: ...,
   plugins: [
     codefend({
-      /** stats: boolean
-      * Displays detailed stats about the obfuscated words:
-      * e.g:
-      * Ignored node_modules (5 times)
-      * Predefined l_Hello -> l_Hi (2 times)
-      * Encrypted l_a -> Ox0 (15 times)
-      */
-      stats: true,
+      transformation:{
+            // the prefix to use of each obfuscated variable
+            prefix: "Ox",
 
+            // control how a specific variable should be obfuscated
+            static: [
+              {
+                from: "predefined_secretword",
+                to: "123456",
+              },
+            ],
 
-      /** prefix: string
-      * the prefix of each variable generated.
-      * note: the first letter of the prefix must be either an alphabet or "_" so that the variable generated be valid.
-      */
-      prefix: "Ox",
-
-      /** predefinedWords: Array<{originalWord:string, targetWord:string}>
-      * words that you want to obfuscate them in a static way (determined output)
-      * {"originalWord":"l_secretVar" , "targetWord": "123456"}
-      * note: the original word must have a prefix 'l_' to be detected in the first place so that it gets replaced.
-      */
-      predefinedWords: [
-        {
-          originalWord: "predefined_secretword",
-          targetWord: "123456",
-        },
-      ],
-
-      /** ignoredWords: Array<string>
-      * Words that matches the pattern to be obfuscated but should be kept as is without being obfuscated.
-      * useful for words that are being obfuscated and causing errors when running or building the code
-      */
-      ignoredWords: ["node_modules"],
-
-      /** regexList: Array<{name:string,value:string,flag:string}>
-       * Regex for detecting the words to be obfuscated
-       */
-      regexList: [
-        {
-          name: "main",
-          value: "([a-zA-Z]+(_[a-zA-Z0-9]+)+)",
-          flag: "g",
-        },
-      ],
+            //will skip obfuscation for the following words
+            ignore: ["node_modules"],
+      },
+      debug: {
+            // to dislpay detailed stats about the words that have been obfuscated
+            stats: true,
+      },
     }),
   ],
 };
 ```
+
+For a more detailed explanation, refer to the [configuration](https://codefend.github.io/docs/references/configuration) section of the `codefend` docs.
 
 ### `Step 2`: Naming convention
 
@@ -103,6 +85,7 @@ class l_Calculator {
   l_sum(l_a, l_b) {
     const l_results = l_a + l_b;
     console.log("node_modules");
+    console.log("predefined_secretword");
     return l_results;
   }
 }
@@ -112,7 +95,8 @@ class l_Calculator {
 class Ox0 {
   Ox1(Ox2, Ox3) {
     const Ox4 = Ox2 + Ox3;
-    console.log("node_modules"); // will not be obfuscated as it is added to ignoredWords in Codefend options
+    console.log("node_modules"); // will not be obfuscated as it is added to ignore
+    console.log("123456"); // will be transformed from predefined_secretword to 1234567 as it was added to staticoptions
     return Ox4;
   }
 }
