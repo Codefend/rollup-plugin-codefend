@@ -46,7 +46,7 @@ export default {
   plugins: [
     codefend({
       transformation:{
-            // the prefix to use of each obfuscated variable
+            // the prefix to use for each obfuscated variable
             prefix: "Ox",
 
             // control how a specific variable should be obfuscated
@@ -61,7 +61,7 @@ export default {
             ignore: ["node_modules"],
       },
       debug: {
-            // to dislpay detailed stats about the words that have been obfuscated
+            // to display detailed stats about the words that have been obfuscated
             stats: true,
       },
     }),
