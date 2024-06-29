@@ -4,7 +4,7 @@ export type IRollupCodefend = {
   name: string;
   transform(code: string): string;
   generateBundle: () => void;
-  options: IObfuscationOptions;
+  ___options: IObfuscationOptions;
 };
 export type IRollupCodefendOptions = {
   transformation?: {

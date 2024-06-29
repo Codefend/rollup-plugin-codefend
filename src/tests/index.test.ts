@@ -13,10 +13,12 @@ describe("Plugin: General Behavior", () => {
   it("default configuration", () => {
     const plugin = codefend();
 
-    expect(plugin.options.prefix).toBe(DEFAULT_TRANSFORMATION_PREFIX);
-    expect(plugin.options.ignoredWords).toStrictEqual([]);
-    expect(plugin.options.predefinedWords).toStrictEqual([]);
-    expect(plugin.options.stats).toBe(true);
-    expect(plugin.options.regexList).toStrictEqual(DEFAULT_PARSER_REGEX_LIST);
+    expect(plugin.___options.prefix).toBe(DEFAULT_TRANSFORMATION_PREFIX);
+    expect(plugin.___options.ignoredWords).toStrictEqual([]);
+    expect(plugin.___options.predefinedWords).toStrictEqual([]);
+    expect(plugin.___options.stats).toBe(true);
+    expect(plugin.___options.regexList).toStrictEqual(
+      DEFAULT_PARSER_REGEX_LIST
+    );
   });
 });
