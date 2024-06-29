@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-codefend",
-  "version": "2.0.3",
+  "version": "3.0.0",
   "description": "Rollup plugin for code obfuscation based on Codefend",
   "keywords": [
     "rollup",
@@ -11,7 +11,11 @@
     "obfuscator",
     "uglification",
     "uglify",
-    "uglifier"
+    "uglifier",
+    "vue",
+    "react",
+    "angular",
+    "svelte"
   ],
   "homepage": "https://github.com/Codefend/rollup-plugin-codefend.git",
   "bugs": {
@@ -30,8 +34,10 @@
     "dist"
   ],
   "scripts": {
+    "test": "vitest",
+    "test:run": "vitest --run",
     "build": "tsup",
-    "prepack": "npm run build"
+    "prepack": "npm run test:run && npm run build"
   },
   "devDependencies": {
     "tsup": "^8.1.0",
@@ -39,9 +45,13 @@
   },
   "dependencies": {
     "codefend": "^2.1.0",
-    "schema-utils": "^4.0.0"
+    "schema-utils": "^4.0.0",
+    "vitest": "^1.6.0"
   },
   "peerDependencies": {
     "rollup": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }
