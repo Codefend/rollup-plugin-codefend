@@ -7,22 +7,20 @@ module.exports = {
   },
   plugins: [
     codefend({
-      stats: true,
-      prefix: "Ox",
-      predefinedWords: [
-        {
-          originalWord: "predefined_secretword",
-          targetWord: "123456",
-        },
-      ],
-      ignoredWords: ["node_modules"],
-      regexList: [
-        {
-          name: "main",
-          value: "([a-zA-Z]+(_[a-zA-Z0-9]+)+)",
-          flag: "g",
-        },
-      ],
+      transformation: {
+        prefix: "Ox",
+        static: [
+          {
+            from: "predefined_secretword",
+            to: "123456",
+          },
+        ],
+        ignore: ["node_modules"],
+      },
+
+      debug: {
+        stats: true,
+      },
     }),
   ],
 };
