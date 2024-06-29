@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-codefend",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Rollup plugin for code obfuscation based on Codefend",
   "keywords": [
     "rollup",
@@ -41,12 +41,12 @@
   },
   "devDependencies": {
     "tsup": "^8.1.0",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.2",
+    "vitest": "^1.6.0"
   },
   "dependencies": {
     "codefend": "^2.1.0",
-    "schema-utils": "^4.0.0",
-    "vitest": "^1.6.0"
+    "schema-utils": "^4.0.0"
   },
   "peerDependencies": {
     "rollup": ">=3.0.0 <4.0.0"
