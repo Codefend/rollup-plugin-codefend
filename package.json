@@ -35,8 +35,9 @@
   ],
   "scripts": {
     "test": "vitest",
+    "test:run": "vitest --run",
     "build": "tsup",
-    "prepack": "npm run build"
+    "prepack": "npm run test:run && npm run build"
   },
   "devDependencies": {
     "tsup": "^8.1.0",
