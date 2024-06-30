@@ -95,8 +95,8 @@ class l_Calculator {
 class Ox0 {
   Ox1(Ox2, Ox3) {
     const Ox4 = Ox2 + Ox3;
-    console.log("node_modules"); // will not be obfuscated as it is added to ignore
-    console.log("123456"); // will be transformed from predefined_secretword to 1234567 as it was added to staticoptions
+    console.log("node_modules"); // has not been obfuscated
+    console.log("123456"); // has transformed from "predefined_secretword" to "123456"
     return Ox4;
   }
 }
