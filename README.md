@@ -5,7 +5,7 @@
 # rollup-plugin-codefend
 
 ![NPM](https://img.shields.io/npm/dt/rollup-plugin-codefend)
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Codefend/rollup-plugin-codefend/ci.yml?branch=ci)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Codefend/rollup-plugin-codefend/ci.yaml?branch=ci)
 ![Bundlephobia](https://img.shields.io/bundlephobia/min/rollup-plugin-codefend)
 ![Node version](https://img.shields.io/node/v/rollup-plugin-codefend)
 ![NPM](https://img.shields.io/npm/l/rollup-plugin-codefend)
