@@ -53,7 +53,7 @@ export default {
             // control how a specific variable should be obfuscated
             static: [
               {
-                from: "predefined_secretword",
+                from: "predefined_secret",
                 to: "123456",
               },
             ],
@@ -86,7 +86,7 @@ class l_Calculator {
   l_sum(l_a, l_b) {
     const l_results = l_a + l_b;
     console.log("node_modules");
-    console.log("predefined_secretword");
+    console.log("predefined_secret");
     return l_results;
   }
 }
@@ -97,7 +97,7 @@ class Ox0 {
   Ox1(Ox2, Ox3) {
     const Ox4 = Ox2 + Ox3;
     console.log("node_modules"); // has not been obfuscated
-    console.log("123456"); // has transformed from "predefined_secretword" to "123456"
+    console.log("123456"); // has transformed from "predefined_secret" to "123456"
     return Ox4;
   }
 }

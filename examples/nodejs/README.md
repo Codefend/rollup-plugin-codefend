@@ -23,17 +23,17 @@ export class c_Calculator {
 
 import { c_Calculator } from "./calculator";
 
-const secret = "predefined_secretword";
+const secret = "predefined_secret";
 const node_modules = "node_modules";
 
 export default function () {
   const l_calculator = new c_Calculator();
   const l_results = l_calculator.f_sum(2, 3);
 
-  /* predefined_secretword -> 123456 : defined in predefinedWords inside rollup.config.js */
+  /* predefined_secret -> 123456 : defined in static inside rollup.config.js */
   console.log("secret: ", secret);
 
-  /* node_modules -> node_modules : defined in ignoredWords inside rollup.config.js */
+  /* node_modules -> node_modules : defined in ignore inside rollup.config.js */
   console.log("node_modules:", node_modules);
 
   /* l_results -> Ox4: with prefix l_ will be obfuscated */
@@ -62,10 +62,10 @@ function main() {
   const Ox3 = new Ox0();
   const Ox4 = Ox3.Ox5(2, 3);
 
-  /* 123456 -> 123456 : defined in predefinedWords inside rollup.config.js */
+  /* 123456 -> 123456 : defined in static inside rollup.config.js */
   console.log("secret: ", secret);
 
-  /* node_modules -> node_modules : defined in ignoredWords inside rollup.config.js */
+  /* node_modules -> node_modules : defined in ignore inside rollup.config.js */
   console.log("node_modules:", node_modules);
 
   /* Ox4 -> Ox4: with prefix l_ will be obfuscated */

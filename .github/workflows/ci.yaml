@@ -1,5 +1,5 @@
 name: CI
-run-name: ${{ github.actor }} ${{ github.event_name }} is testing out GitHub Actions 🚀
+run-name: CI run 🚀
 
 on: [push]
 
@@ -12,6 +12,16 @@ jobs:
       - uses: actions/setup-node@v4
       - name: 🛡️ Audit
         run: npm audit --audit-level=high
+
+  spell:
+    name: 🈸 Spellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - uses: bahmutov/npm-install@v1
+      - name: 🈸 Spellcheck
+        run: npm run spell:check
 
   test:
     name: ⚡ Tests

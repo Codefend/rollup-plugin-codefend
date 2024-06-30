@@ -1,0 +1,12 @@
+{
+  "version": "0.1",
+  "language": "en",
+  "words": ["codefend", "Bundlephobia", "tsup"],
+  "ignorePaths": [
+    "package.json",
+    "package-lock.json",
+    "tsconfig.json",
+    "node_modules/**",
+    "examples/**/node_modules/**"
+  ]
+}
