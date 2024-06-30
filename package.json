@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Codefend/rollup-plugin-codefend.git"
+    "url": "git+https://github.com/Codefend/rollup-plugin-codefend.git"
   },
   "author": "Mounzer Adas",
   "license": "MIT",
