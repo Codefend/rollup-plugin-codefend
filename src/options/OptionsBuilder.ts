@@ -14,7 +14,7 @@ export class OptionsBuilder {
     this.name = name;
   }
 
-  setOptions(pluginOptions: IRollupCodefendOptions) {
+  setOptions(pluginOptions: IRollupCodefendOptions): this {
     this.pluginOptions = pluginOptions;
     this.libraryOptions = buildObfuscationOptions(
       OptionsAdapter.transform(pluginOptions)
@@ -22,7 +22,7 @@ export class OptionsBuilder {
     return this;
   }
 
-  setAdditionalIgnoredWords(additionalIgnoredWords: string[]) {
+  setAdditionalIgnoredWords(additionalIgnoredWords: string[]): this {
     this.additionalIgnoredWords = additionalIgnoredWords;
     return this;
   }

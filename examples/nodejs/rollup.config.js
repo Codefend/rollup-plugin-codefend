@@ -11,7 +11,7 @@ module.exports = {
         prefix: "Ox",
         static: [
           {
-            from: "predefined_secretword",
+            from: "predefined_secret",
             to: "123456",
           },
         ],
