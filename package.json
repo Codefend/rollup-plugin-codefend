@@ -39,10 +39,14 @@
     "build": "tsup",
     "prepack": "npm run test:run && npm run build",
     "spell:check": "cspell \"**\"",
-    "type:check": "tsc --noEmit"
+    "type:check": "tsc --noEmit",
+    "lint:check": "eslint src --ext .ts"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.14.1",
+    "@typescript-eslint/parser": "^7.14.1",
     "cspell": "^8.9.1",
+    "eslint": "^8.56.0",
     "tsup": "^8.1.0",
     "typescript": "^5.5.2",
     "vitest": "^1.6.0"
