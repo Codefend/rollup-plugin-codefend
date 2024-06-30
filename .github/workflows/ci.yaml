@@ -23,6 +23,16 @@ jobs:
       - name: 🈸 Spellcheck
         run: npm run spell:check
 
+  type:
+    name: ʦ Typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - uses: bahmutov/npm-install@v1
+      - name: ʦ Typecheck
+        run: npm run type:check
+
   test:
     name: ⚡ Tests
     runs-on: ubuntu-latest
@@ -35,7 +45,7 @@ jobs:
 
   build:
     name: 🚀 Build
-    needs: [audit, test]
+    needs: [audit, spell, type, test]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

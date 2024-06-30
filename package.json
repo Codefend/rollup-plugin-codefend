@@ -38,7 +38,8 @@
     "test:run": "vitest --run",
     "build": "tsup",
     "prepack": "npm run test:run && npm run build",
-    "spell:check": "cspell \"**\""
+    "spell:check": "cspell \"**\"",
+    "type:check": "tsc --noEmit"
   },
   "devDependencies": {
     "cspell": "^8.9.1",
