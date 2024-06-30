@@ -4,6 +4,9 @@
     "build": "rollup --config"
   },
   "devDependencies": {
-    "rollup": "^3.9.1"
+    "rollup": "^4.18.0"
+  },
+  "dependencies": {
+    "rollup-plugin-codefend": "^3.0.1"
   }
 }

@@ -1,4 +1,4 @@
-const { codefend } = require("../../lib/cjs/index");
+const { codefend } = require("rollup-plugin-codefend");
 module.exports = {
   input: "src/main.js",
   output: {
