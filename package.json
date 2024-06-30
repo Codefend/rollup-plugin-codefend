@@ -37,10 +37,10 @@
     "test": "vitest",
     "test:run": "vitest --run",
     "build": "tsup",
-    "prepack": "npm run test:run && npm run build",
+    "lint:check": "eslint src --ext .ts",
     "spell:check": "cspell \"**\"",
     "type:check": "tsc --noEmit",
-    "lint:check": "eslint src --ext .ts"
+    "prepack": "npm run lint:check && npm run spell:check && npm run type:check && npm run test:run && npm run build"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.14.1",
