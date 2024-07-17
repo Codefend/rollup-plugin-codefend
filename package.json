@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-codefend",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "Rollup plugin for code obfuscation based on Codefend",
   "keywords": [
     "rollup",
@@ -37,16 +37,19 @@
     "test": "vitest",
     "test:run": "vitest --run",
     "build": "tsup",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\"",
     "lint:check": "eslint src --ext .ts",
     "spell:check": "cspell \"**\"",
     "type:check": "tsc --noEmit",
-    "prepack": "npm run lint:check && npm run spell:check && npm run type:check && npm run test:run && npm run build"
+    "prepack": "npm run format:check && npm run lint:check && npm run spell:check && npm run type:check && npm run test:run && npm run build"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.16.1",
     "@typescript-eslint/parser": "^7.16.0",
     "cspell": "^8.10.4",
     "eslint": "^8.56.0",
+    "prettier": "^3.3.3",
     "tsup": "^8.1.0",
     "typescript": "^5.5.2",
     "vitest": "^2.0.3"
