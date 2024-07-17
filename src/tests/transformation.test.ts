@@ -43,7 +43,7 @@ describe("Transformation", () => {
     };
     const plugin = codefend(options);
     expect(plugin.transform(TEST_BASIC_LINE)).toBe(
-      "const l_variable_replaced = 1;"
+      "const l_variable_replaced = 1;",
     );
   });
 });

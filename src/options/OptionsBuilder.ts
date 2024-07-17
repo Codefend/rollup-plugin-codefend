@@ -17,7 +17,7 @@ export class OptionsBuilder {
   setOptions(pluginOptions: IRollupCodefendOptions): this {
     this.pluginOptions = pluginOptions;
     this.libraryOptions = buildObfuscationOptions(
-      OptionsAdapter.transform(pluginOptions)
+      OptionsAdapter.transform(pluginOptions),
     );
     return this;
   }

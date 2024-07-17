@@ -18,7 +18,7 @@ describe("Plugin: General Behavior", () => {
     expect(plugin.___options.predefinedWords).toStrictEqual([]);
     expect(plugin.___options.stats).toBe(true);
     expect(plugin.___options.regexList).toStrictEqual(
-      DEFAULT_PARSER_REGEX_LIST
+      DEFAULT_PARSER_REGEX_LIST,
     );
   });
 });

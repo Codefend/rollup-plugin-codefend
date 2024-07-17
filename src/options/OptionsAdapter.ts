@@ -34,7 +34,7 @@ class OptionsAdapter {
     return pluginOptions?.transformation?.ignore ?? [];
   }
   private predefinedWords(
-    pluginOptions: IRollupCodefendOptions
+    pluginOptions: IRollupCodefendOptions,
   ): IPredefinedWordOption[] {
     return (
       pluginOptions?.transformation?.static?.map(({ from, to }) => {
