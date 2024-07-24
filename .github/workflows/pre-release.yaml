@@ -1,0 +1,51 @@
+name: Pre-release Stats
+run-name: Pre-release Stats on Main
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  audit:
+    name: 🛡️ Audit
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - name: 🛡️ Audit
+        run: npm audit --audit-level=moderate
+
+  format:
+    name: 🔬 Format
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - uses: bahmutov/npm-install@v1
+      - name: 🔬 Format
+        run: npm run format:check
+
+  lint:
+    name: ⬣ ESLint
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - uses: bahmutov/npm-install@v1
+      - name: ⬣ ESLint
+        run: npm run lint:check
+
+  type:
+    name: ʦ Typecheck
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - uses: bahmutov/npm-install@v1
+      - name: ʦ Typecheck
+        run: npm run type:check
