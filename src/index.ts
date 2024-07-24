@@ -8,7 +8,7 @@ export const codefend = (options?: IRollupCodefendOptions): IRollupCodefend => {
   const ___options = new OptionsBuilder(name).setOptions(options ?? {}).build();
   return {
     name,
-    transform(code: string): string {
+    transform(code: string) {
       return obfuscate(code, ___options, runtimeOptions);
     },
     generateBundle: function write(): void {
