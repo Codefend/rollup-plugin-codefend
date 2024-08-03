@@ -43,26 +43,6 @@
           "type": "boolean"
         }
       }
-    },
-    "parser": {
-      "type": "object",
-      "properties": {
-        "regexList": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string"
-              },
-              "value": {
-                "type": "string"
-              }
-            },
-            "required": ["name", "value"]
-          }
-        }
-      }
     }
   }
 }

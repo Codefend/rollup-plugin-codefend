@@ -1,12 +1,10 @@
-import { IObfuscationOptions } from "codefend/build/src/core/options";
-import { buildObfuscationOptions } from "codefend";
-import { IRollupCodefendOptions } from "../models/Types";
+import { IRollupCodefendInternalOptions, IRollupCodefendOptions } from "../models/Types";
 import OptionsAdapter from "./OptionsAdapter";
 import OptionsValidator from "./OptionsValidator";
 
 export class OptionsBuilder {
   name: string;
-  libraryOptions!: IObfuscationOptions;
+  libraryOptions!: IRollupCodefendInternalOptions;
   pluginOptions!: IRollupCodefendOptions;
   additionalIgnoredWords: string[] = [];
 
@@ -16,9 +14,7 @@ export class OptionsBuilder {
 
   setOptions(pluginOptions: IRollupCodefendOptions): this {
     this.pluginOptions = pluginOptions;
-    this.libraryOptions = buildObfuscationOptions(
-      OptionsAdapter.transform(pluginOptions),
-    );
+    this.libraryOptions = OptionsAdapter.transform(pluginOptions);
     return this;
   }
 
@@ -27,11 +23,11 @@ export class OptionsBuilder {
     return this;
   }
 
-  build(): IObfuscationOptions {
+  build(): IRollupCodefendInternalOptions {
     OptionsValidator.validateOptions(this.name, this.pluginOptions);
 
     this.additionalIgnoredWords.forEach((word) => {
-      this.libraryOptions.ignoredWords.push(word);
+      this.libraryOptions.transformation?.ignore!.push(word);
     });
     return this.libraryOptions;
   }

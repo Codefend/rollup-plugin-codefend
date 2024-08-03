@@ -1,31 +1,26 @@
-import { IObfuscationOptions } from "codefend/build/src/core/options";
+import type {
+  ICodefendDebugOptions,
+  ICodefendTransformationOptions,
+  ICodefendParserOptions,
+  ICodefendInternalDebugOptions,
+  ICodefendInternalParserOptions,
+  ICodefendInternalTransformationOptions,
+} from "codefend";
 
 export type IRollupCodefend = {
   name: string;
   transform(code: string): string;
   generateBundle: () => void;
-  ___options: IObfuscationOptions;
+  ___options: IRollupCodefendInternalOptions;
 };
 export type IRollupCodefendOptions = {
-  transformation?: {
-    prefix?: string;
-    static?: ICodefendTransformationStatic[];
-    ignore?: string[];
-  };
-  debug?: {
-    stats?: boolean;
-  };
-  parser?: {
-    regexList?: ICodefendParserRegexListItem[];
-  };
+  transformation?: ICodefendTransformationOptions;
+  debug?: ICodefendDebugOptions;
+  parser?: ICodefendParserOptions;
 };
 
-export type ICodefendParserRegexListItem = {
-  name: string;
-  value: string;
-};
-
-export type ICodefendTransformationStatic = {
-  from: string;
-  to: string;
+export type IRollupCodefendInternalOptions = {
+  transformation: ICodefendInternalTransformationOptions;
+  debug: ICodefendInternalDebugOptions;
+  parser: ICodefendInternalParserOptions;
 };
