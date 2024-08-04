@@ -1,7 +1,7 @@
 {
   "version": "0.1",
   "language": "en",
-  "words": ["codefend", "Bundlephobia", "tsup"],
+  "words": ["codefend", "Bundlephobia", "tsup", "octocat"],
   "ignorePaths": [
     "package.json",
     "package-lock.json",

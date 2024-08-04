@@ -1,7 +1,7 @@
 import { validate } from "schema-utils";
 import schema from "./schema.json";
 import { JSONSchema7 } from "schema-utils/declarations/ValidationError";
-import { IRollupCodefendOptions } from "../models/Types";
+import { IRollupCodefendOptions } from "../data/Types";
 
 class OptionsValidator {
   validateOptions(name: string, pluginOptions: IRollupCodefendOptions): void {
