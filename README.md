@@ -4,8 +4,8 @@
 
 # rollup-plugin-codefend
 
-![NPM](https://img.shields.io/npm/dt/rollup-plugin-codefend)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Codefend/rollup-plugin-codefend/ci.yaml?branch=main)
+![NPM](https://img.shields.io/npm/dt/rollup-plugin-codefend)
 ![Bundlephobia](https://img.shields.io/bundlephobia/min/rollup-plugin-codefend)
 ![Node version](https://img.shields.io/node/v/rollup-plugin-codefend)
 ![NPM](https://img.shields.io/npm/l/rollup-plugin-codefend)
@@ -60,6 +60,9 @@ export default {
 
             //will skip obfuscation for the following words
             ignore: ["node_modules"],
+
+            // By using everyday words such as books or recipes in the pool, you can subtly obfuscate your code, concealing its true nature without making it apparent that obfuscation is occurring.
+            pool: ["QueenOfHeart"],
       },
       debug: {
             // to display detailed stats about the words that have been obfuscated
@@ -93,7 +96,8 @@ class l_Calculator {
 
 //>>>>>>==== Will Become ======<<<<<<
 
-class Ox0 {
+class QueenOfHeart /* 'QueenOfHeart' defined in pool*/ {
+  /* Ox1, Ox2... prefix transformation*/
   Ox1(Ox2, Ox3) {
     const Ox4 = Ox2 + Ox3;
     console.log("node_modules"); // has not been obfuscated
