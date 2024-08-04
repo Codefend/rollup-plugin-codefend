@@ -55,7 +55,7 @@
     "vitest": "^2.0.5"
   },
   "dependencies": {
-    "codefend": "^3.1.0-alpha.3",
+    "codefend": "^3.1.0",
     "schema-utils": "^4.0.0"
   },
   "peerDependencies": {
