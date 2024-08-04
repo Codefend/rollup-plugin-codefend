@@ -61,7 +61,9 @@ export default {
             //will skip obfuscation for the following words
             ignore: ["node_modules"],
 
-            // By using everyday words such as books or recipes in the pool, you can subtly obfuscate your code, concealing its true nature without making it apparent that obfuscation is occurring.
+            /* By using everyday words such as books or lorem ipsum in the pool,
+            you can subtly obfuscate your code,
+            concealing its true nature without making it apparent that obfuscation is occurring.*/
             pool: ["QueenOfHeart"],
       },
       debug: {
