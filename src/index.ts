@@ -1,5 +1,5 @@
 import { OptionsBuilder } from "./options/OptionsBuilder";
-import { IRollupCodefend, IRollupCodefendOptions } from "./models/Types";
+import { IRollupCodefend, IRollupCodefendOptions } from "./data/Types";
 import { buildRuntimeOptions, obfuscate, stats } from "codefend";
 
 export const codefend = (options?: IRollupCodefendOptions): IRollupCodefend => {

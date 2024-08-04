@@ -1,7 +1,6 @@
 import type {
   ICodefendDebugOptions,
   ICodefendTransformationOptions,
-  ICodefendParserOptions,
   ICodefendInternalDebugOptions,
   ICodefendInternalParserOptions,
   ICodefendInternalTransformationOptions,
@@ -15,8 +14,7 @@ export type IRollupCodefend = {
 };
 export type IRollupCodefendOptions = {
   transformation?: ICodefendTransformationOptions;
-  debug?: ICodefendDebugOptions;
-  parser?: ICodefendParserOptions;
+  debug?: IRollupCodefendDebugOptions;
 };
 
 export type IRollupCodefendInternalOptions = {
@@ -24,3 +22,5 @@ export type IRollupCodefendInternalOptions = {
   debug: ICodefendInternalDebugOptions;
   parser: ICodefendInternalParserOptions;
 };
+
+type IRollupCodefendDebugOptions = Omit<ICodefendDebugOptions, "ignoredWarnings">;

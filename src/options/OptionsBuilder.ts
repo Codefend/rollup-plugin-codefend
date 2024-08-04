@@ -1,4 +1,4 @@
-import { IRollupCodefendInternalOptions, IRollupCodefendOptions } from "../models/Types";
+import { IRollupCodefendInternalOptions, IRollupCodefendOptions } from "../data/Types";
 import OptionsAdapter from "./OptionsAdapter";
 import OptionsValidator from "./OptionsValidator";
 
