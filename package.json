@@ -47,7 +47,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.8.0",
     "@typescript-eslint/parser": "^8.8.0",
-    "cspell": "^8.14.2",
+    "cspell": "^8.14.4",
     "eslint": "^9.11.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
