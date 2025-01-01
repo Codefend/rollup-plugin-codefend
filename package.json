@@ -54,7 +54,7 @@
     "prettier": "^3.3.3",
     "tsup": "^8.3.0",
     "typescript": "^5.5.4",
-    "vitest": "^2.1.1"
+    "vitest": "^2.1.8"
   },
   "dependencies": {
     "codefend": "^3.2.0",
