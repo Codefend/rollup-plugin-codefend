@@ -8,7 +8,7 @@ import type {
 
 export type IRollupCodefend = {
   name: string;
-  transform(code: string): string;
+  transform(code: string, id?: string): string;
   generateBundle: () => void;
   ___options: IRollupCodefendInternalOptions;
 };
