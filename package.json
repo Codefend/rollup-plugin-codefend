@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-codefend",
-  "version": "3.2.1",
+  "version": "3.2.2",
   "description": "Rollup plugin for code obfuscation based on Codefend",
   "keywords": [
     "rollup",
@@ -36,29 +36,36 @@
   "scripts": {
     "test": "vitest",
     "test:run": "vitest --run",
-    "build": "tsup",
-    "format": "prettier --write \"src/**/*.ts\"",
-    "format:check": "prettier --check \"src/**/*.ts\"",
+    "build": "tsdown",
+    "format": "prettier --write \"{src/**/*.ts,scripts/**/*.mjs,*.{ts,mts},*.js,examples/**/*.js}\"",
+    "format:check": "prettier --check \"{src/**/*.ts,scripts/**/*.mjs,*.{ts,mts},*.js,examples/**/*.js}\"",
     "lint:check": "eslint src",
-    "spell:check": "cspell \"**\"",
+    "spell:check": "cspell \"{README.md,CHANGELOG.md,CODE_OF_CONDUCT.md,CONTRIBUTING.md,src/**/*.ts}\"",
     "type:check": "tsc --noEmit",
-    "prepack": "npm run format:check && npm run lint:check && npm run spell:check && npm run type:check && npm run test:run && npm run build"
+    "prepack": "npm run format:check && npm run lint:check && npm run spell:check && npm run type:check && npm run test:run && npm run build && npm run test:package",
+    "test:coverage": "vitest run --coverage",
+    "test:package": "node scripts/check-package.mjs"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.8.0",
-    "@typescript-eslint/parser": "^8.8.0",
-    "cspell": "^8.14.4",
-    "eslint": "^9.11.1",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.2.1",
-    "prettier": "^3.3.3",
-    "tsup": "^8.3.0",
-    "typescript": "^5.5.4",
-    "vitest": "^2.1.1"
+    "@types/node": "^22.20.5",
+    "@typescript-eslint/eslint-plugin": "^8.74.0",
+    "@typescript-eslint/parser": "^8.74.0",
+    "@vitest/coverage-v8": "^5.1.2",
+    "cspell": "^10.5.2",
+    "eslint": "^10.15.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.7",
+    "prettier": "^3.10.1",
+    "tsdown": "^0.23.7",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.2",
+    "rollup": "^4.68.8",
+    "rollup-3": "npm:rollup@^3.29.5"
   },
   "dependencies": {
-    "codefend": "^3.2.0",
-    "schema-utils": "^4.0.0"
+    "codefend": "^3.2.1",
+    "schema-utils": "^4.8.5"
   },
   "peerDependencies": {
     "rollup": ">=3.0.0 <5.0.0"
