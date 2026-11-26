@@ -4,13 +4,15 @@
 
 # rollup-plugin-codefend
 
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Codefend/rollup-plugin-codefend/ci.yaml?branch=main)
+[![Latest CI workflow status](https://img.shields.io/github/actions/workflow/status/Codefend/rollup-plugin-codefend/ci.yaml)](https://github.com/Codefend/rollup-plugin-codefend/actions/workflows/ci.yaml)
 ![NPM](https://img.shields.io/npm/dt/rollup-plugin-codefend)
-![Bundlephobia](https://img.shields.io/bundlephobia/min/rollup-plugin-codefend)
-![Node version](https://img.shields.io/node/v/rollup-plugin-codefend)
+[![npm unpacked size](https://img.shields.io/npm/unpacked-size/rollup-plugin-codefend)](https://www.npmjs.com/package/rollup-plugin-codefend)
+![NPM](https://img.shields.io/node/v/rollup-plugin-codefend)
 ![NPM](https://img.shields.io/npm/l/rollup-plugin-codefend)
 
 Rollup plugin for code obfuscation based on [Codefend](https://www.npmjs.com/package/codefend)
+
+Supports Rollup 3 and 4 on Node.js 18 or newer.
 
 ## Installation
 
@@ -79,13 +81,13 @@ For a more detailed explanation, refer to the [configuration](https://codefend.g
 
 ### `Step 2`: Naming convention
 
-In your code, `add prefixes to the words that you want Codefend to encrypt.`
+In your code, `add prefixes to the words that you want Codefend to obfuscate.`
 
-`Make sure to read the `[`Philosophy`](https://github.com/Codefend/core#philosophy)` behind Codefend obfuscation First to understand why Codefend can work with any code written in any language.`
+Codefend transforms identifiers that match its naming conventions.
 
 ```js
 //node js example
-//as a starting point:  prefix the words that should be encrypted with l_
+//as a starting point:  prefix the words that should be obfuscated with l_
 
 class l_Calculator {
   l_sum(l_a, l_b) {
