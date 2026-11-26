@@ -1,6 +1,7 @@
 const tsPlugin = require("@typescript-eslint/eslint-plugin");
 const prettierPlugin = require("eslint-plugin-prettier");
 const tsParser = require("@typescript-eslint/parser");
+const prettierConfig = require("eslint-config-prettier/flat");
 
 module.exports = [
   {
@@ -23,4 +24,5 @@ module.exports = [
       "@typescript-eslint/explicit-function-return-type": 2,
     },
   },
+  prettierConfig,
 ];

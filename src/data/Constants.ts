@@ -6,3 +6,6 @@ export const DEFAULT_PARSER_REGEX_LIST = [
   },
 ];
 export const DEFAULT_PARSER_NAME = "codeOnly";
+
+// This generated module supplies helpers that Rolldown resolves by their original names.
+export const ROLLDOWN_RUNTIME_MODULE_ID = "\0rolldown/runtime.js";
