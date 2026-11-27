@@ -12,7 +12,7 @@
 
 Rollup plugin for code obfuscation based on [Codefend](https://www.npmjs.com/package/codefend).
 
-Supports Rollup 3 and 4. The plugin requires Node.js 18 or newer.
+Supports Rollup 3 and 4.
 
 ## Installation
 
