@@ -41,6 +41,6 @@ npm pack --dry-run
 
 The source TypeScript compiler remains on the compatible 5.x line. A TypeScript 7 migration is separate from this maintenance update. The build uses [tsdown](https://tsdown.dev/guide/migrate-from-tsup) while preserving the existing `dist/index.js`, `dist/index.mjs`, and declaration paths.
 
-For the example, build the root package first, then run `npm ci` and `npm run build` from `examples/nodejs`. The example uses the local checkout.
+Usage examples are maintained in the [Rollup example](https://codefend.github.io/docs/examples/rollup) in the Codefend documentation.
 
 Use a descriptive conventional commit, such as `fix: ...` or `chore(deps): ...`. Releases are manual: review the version and changelog, pass the checks, and publish only with maintainer approval. The repository has no automatic publishing workflow.

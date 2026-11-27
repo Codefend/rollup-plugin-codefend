@@ -10,11 +10,13 @@
 ![NPM](https://img.shields.io/node/v/rollup-plugin-codefend)
 ![NPM](https://img.shields.io/npm/l/rollup-plugin-codefend)
 
-Rollup plugin for code obfuscation based on [Codefend](https://www.npmjs.com/package/codefend)
+Rollup plugin for code obfuscation based on [Codefend](https://www.npmjs.com/package/codefend).
 
-Supports Rollup 3 and 4 on Node.js 18 or newer.
+Supports Rollup 3 and 4. Requires Node.js 18 or newer.
 
 ## Installation
+
+Install the plugin in your existing Rollup project:
 
 ```bash
 npm install -D rollup-plugin-codefend
@@ -22,138 +24,115 @@ npm install -D rollup-plugin-codefend
 
 ## Usage
 
-### `Step 1`: Configuration
+### Default options
 
-Add to your `rollup.config.js`:
-
-#### Default options
+Add the plugin to your `rollup.config.mjs`. Keep any other plugins and build settings your project needs.
 
 ```js
 import { codefend } from "rollup-plugin-codefend";
 
 export default {
-  input:...,
-  output: ...,
+  input: "src/main.js",
+  output: {
+    file: "dist/bundle.js",
+    format: "esm",
+  },
   plugins: [codefend()],
 };
 ```
 
-#### Custom options
+### Custom options
+
+All three Codefend plugins share the same `transformation` and `debug` options:
 
 ```js
 import { codefend } from "rollup-plugin-codefend";
 
 export default {
-  input: ...,
-  output: ...,
+  input: "src/main.js",
+  output: {
+    file: "dist/bundle.js",
+    format: "esm",
+  },
   plugins: [
     codefend({
-      transformation:{
-            // the prefix to use for each obfuscated variable
-            prefix: "Ox",
+      transformation: {
+        // Prefix for generated names.
+        prefix: "Ox",
 
-            // control how a specific variable should be obfuscated
-            static: [
-              {
-                from: "predefined_secret",
-                to: "123456",
-              },
-            ],
+        // Explicit replacements for selected words.
+        static: [{ from: "predefined_secret", to: "123456" }],
 
-            //will skip obfuscation for the following words
-            ignore: ["node_modules"],
+        // Words that should retain their original spelling.
+        ignore: ["node_modules"],
 
-            /* By using everyday words such as books or lorem ipsum in the pool,
-            you can subtly obfuscate your code,
-            concealing its true nature without making it apparent that obfuscation is occurring.*/
-            pool: ["QueenOfHeart"],
+        // Optional names to use before generating prefixed names.
+        pool: ["QueenOfHeart"],
       },
       debug: {
-            // to display detailed stats about the words that have been obfuscated
-            stats: true,
+        // Display statistics for transformed words.
+        stats: true,
       },
     }),
   ],
 };
 ```
 
-For a more detailed explanation, refer to the [configuration](https://codefend.github.io/docs/references/configuration) section of the `codefend` docs.
+`transformation.ignore` contains words to preserve, not file paths or module filters. Statistics are enabled by default; use `debug: { stats: false }` to disable them.
 
-### `Step 2`: Naming convention
+The plugins use Codefend's `codeOnly` parser. CLI options for copying source files, renaming files and folders, and selecting custom parsers are not exposed. See the [configuration reference](https://codefend.github.io/docs/references/configuration) for transformation details.
 
-In your code, `add prefixes to the words that you want Codefend to obfuscate.`
+### Naming convention
 
-Codefend transforms identifiers that match its naming conventions.
+Add a prefix such as `l_` to names you want Codefend to obfuscate:
 
 ```js
-//node js example
-//as a starting point:  prefix the words that should be obfuscated with l_
-
-class l_Calculator {
-  l_sum(l_a, l_b) {
-    const l_results = l_a + l_b;
-    console.log("node_modules");
-    console.log("predefined_secret");
-    return l_results;
-  }
+function l_add(l_left, l_right) {
+  return l_left + l_right;
 }
 
-//>>>>>>==== Will Become ======<<<<<<
-
-class QueenOfHeart /* 'QueenOfHeart' defined in pool*/ {
-  /* Ox1, Ox2... prefix transformation*/
-  Ox1(Ox2, Ox3) {
-    const Ox4 = Ox2 + Ox3;
-    console.log("node_modules"); // has not been obfuscated
-    console.log("123456"); // has transformed from "predefined_secret" to "123456"
-    return Ox4;
-  }
-}
+console.log(l_add(2, 3));
 ```
 
-```html
-<!-- Html example, can work also with Angular,React,Vue,Svelte... in the same way -->
+With default options, Codefend transforms those names:
 
-<html>
-  <head>
-    <style>
-      .l_red {
-        color: red;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="l_red">l_secret</div>
-    <div class="l_red">Hello World</div>
-  </body>
-</html>
+```js
+function Ox0(Ox1, Ox2) {
+  return Ox1 + Ox2;
+}
 
-<!-- Will Become -->
+console.log(Ox0(2, 3));
+```
 
-<html>
-  <head>
-    <style>
-      .Ox1 {
-        color: red;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="Ox1">Ox0</div>
-    <div class="Ox1">Hello World</div>
-  </body>
-</html>
+Both versions print `5`. Generated names can vary with the input and build order. See the [code naming conventions](https://codefend.github.io/docs/basic-usage/naming-conventions/code-naming-convention) for other supported prefixes.
+
+Codefend matches source text, so replacements can also affect strings and property names. Keep public exports, framework APIs, and external data contracts stable with `transformation.ignore`, and test the built application. Test custom pools across all modules before adopting them.
+
+## Build behavior
+
+The plugin transforms source modules during Rollup's `transform` hook and prints statistics after bundle generation. It runs whenever included in the configuration, including watch builds.
+
+It transforms the module text supplied by Rollup. Process HTML or CSS through the appropriate build plugins before relying on Codefend to see that text. For Vite projects, use [vite-plugin-codefend](https://www.npmjs.com/package/vite-plugin-codefend).
+
+Build with your usual project command, or run:
+
+```bash
+npx rollup --config
 ```
 
 ## Examples
 
-1. ### [`Node js`](./examples/nodejs/)
+Follow the [Rollup example](https://codefend.github.io/docs/examples/rollup) in the Codefend documentation for complete source code, configuration, build commands, and expected output.
+
+## Documentation
+
+- [Codefend documentation](https://codefend.github.io/docs/)
+- [All language and build examples](https://codefend.github.io/docs/examples/list)
+- [Vite plugin](https://www.npmjs.com/package/vite-plugin-codefend), [Rollup plugin](https://www.npmjs.com/package/rollup-plugin-codefend), and [Webpack plugin](https://www.npmjs.com/package/webpack-plugin-codefend)
 
 ## Contributing
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
+Pull requests and bug reports are welcome. See [CONTRIBUTING.md](./CONTRIBUTING.md) for development commands and contribution guidelines.
 
 ## License
 

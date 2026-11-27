@@ -106,12 +106,6 @@ jobs:
         run: npm run test:package
       - name: 📦 Package contents
         run: npm pack --dry-run --ignore-scripts
-      - name: 📥 Install example dependencies
-        run: npm ci --include=dev --include=optional --bin-links
-        working-directory: examples/nodejs
-      - name: 📚 Build example
-        run: npm run build
-        working-directory: examples/nodejs
   windows:
     name: 🪟 Windows compatibility
     runs-on: windows-latest
@@ -139,12 +133,6 @@ jobs:
         run: npm run test:package
       - name: 📦 Package contents
         run: npm pack --dry-run --ignore-scripts
-      - name: 📥 Install example dependencies
-        run: npm ci --include=dev --include=optional --bin-links
-        working-directory: examples/nodejs
-      - name: 📚 Build example
-        run: npm run build
-        working-directory: examples/nodejs
   runtime:
     name: 🧪 Node.js ${{ matrix.node }} runtime
     needs:
