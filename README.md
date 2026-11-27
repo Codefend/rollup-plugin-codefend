@@ -132,7 +132,7 @@ Follow the [Rollup example](https://codefend.github.io/docs/examples/rollup) in 
 
 - [Codefend documentation](https://codefend.github.io/docs/)
 - [All language and build examples](https://codefend.github.io/docs/examples/list)
-- [Vite plugin](https://www.npmjs.com/package/vite-plugin-codefend), [Rollup plugin](https://www.npmjs.com/package/rollup-plugin-codefend), and [Webpack plugin](https://www.npmjs.com/package/webpack-plugin-codefend)
+- [Vite plugin](https://www.npmjs.com/package/vite-plugin-codefend), [esbuild plugin](https://www.npmjs.com/package/esbuild-plugin-codefend), [Rollup plugin](https://www.npmjs.com/package/rollup-plugin-codefend), and [Webpack plugin](https://www.npmjs.com/package/webpack-plugin-codefend)
 
 ## Contributing
 
