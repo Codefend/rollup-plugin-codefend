@@ -43,7 +43,7 @@ export default {
 
 ### Custom options
 
-All three Codefend plugins share the same `transformation` and `debug` options:
+Customize obfuscation and statistics with the `transformation` and `debug` options:
 
 ```js
 import { codefend } from "rollup-plugin-codefend";
@@ -107,6 +107,10 @@ console.log(Ox0(2, 3));
 Both versions print `5`. Generated names can vary with the input and build order. See the [code naming conventions](https://codefend.github.io/docs/basic-usage/naming-conventions/code-naming-convention) for other supported prefixes.
 
 Codefend matches source text, so replacements can also affect strings and property names. Keep public exports, framework APIs, and external data contracts stable with `transformation.ignore`, and test the built application. Test custom pools across all modules before adopting them.
+
+## Migrate an existing project with AI
+
+Use the [AI migration prompt](https://codefend.github.io/docs/basic-usage/naming-conventions/ai-assisted-migration) to adapt an existing project's internal variables, functions, classes, parameters, and members to Codefend's naming conventions. The guide provides a copyable prompt that asks your coding assistant to update references, preserve external interfaces and data keys, and test both the renamed source and the Codefend output.
 
 ## Build behavior
 
