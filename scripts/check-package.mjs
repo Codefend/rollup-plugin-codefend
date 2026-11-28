@@ -25,33 +25,39 @@ for (const entry of [manifest.main, manifest.module]) {
 }
 
 for (const api of [commonjs, esm]) {
-  assert.equal(api.codefend({ debug: { stats: false } }).transform("const l_value = 1;"), "const Ox0 = 1;");
-  for (const build of [rollup3, rollup]) {
-    const bundle = await build({
-      input: "entry",
-      plugins: [
-        {
-          name: "fixture",
-          resolveId(id) {
-            return id === "entry" ? id : null;
+  for (const parserName of ["codeOnly", "startWithMAndUnderscore"]) {
+    assert.equal(api.codefend({ debug: { stats: false } }).transform("const l_value = 1;"), "const Ox0 = 1;");
+    for (const build of [rollup3, rollup]) {
+      const bundle = await build({
+        input: "entry",
+        plugins: [
+          {
+            name: "fixture",
+            resolveId(id) {
+              return id === "entry" ? id : null;
+            },
+            load(id) {
+              return id === "entry"
+                ? "const m_value = 3; const l_external = 2; export default m_value + l_external;"
+                : null;
+            },
           },
-          load(id) {
-            return id === "entry" ? "const l_value = 5; export default l_value;" : null;
-          },
-        },
-        api.codefend({ debug: { stats: false } }),
-      ],
-    });
-    try {
-      const result = await bundle.generate({ format: "cjs" });
-      const chunk = result.output.find((output) => output.type === "chunk");
-      assert.ok(chunk);
-      assert.doesNotMatch(chunk.code, /\bl_value\b/);
-      const module = { exports: {} };
-      vm.runInNewContext(chunk.code, { module, exports: module.exports });
-      assert.equal(module.exports, 5);
-    } finally {
-      await bundle.close();
+          api.codefend({ parser: { name: parserName }, debug: { stats: false } }),
+        ],
+      });
+      try {
+        const result = await bundle.generate({ format: "cjs" });
+        const chunk = result.output.find((output) => output.type === "chunk");
+        assert.ok(chunk);
+        assert.doesNotMatch(chunk.code, /\bm_value\b/);
+        if (parserName === "startWithMAndUnderscore") assert.match(chunk.code, /\bl_external\b/);
+        else assert.doesNotMatch(chunk.code, /\bl_external\b/);
+        const module = { exports: {} };
+        vm.runInNewContext(chunk.code, { module, exports: module.exports });
+        assert.equal(module.exports, 5);
+      } finally {
+        await bundle.close();
+      }
     }
   }
 }
@@ -62,6 +68,7 @@ console.log(
     node: process.version,
     plugin: manifest.version,
     codefend: core.version,
+    parsers: ["codeOnly", "startWithMAndUnderscore"],
     checks: ["CommonJS", "ESM", "declarations", "source maps", "Rollup 3/4 compilation/execution"],
   }),
 );

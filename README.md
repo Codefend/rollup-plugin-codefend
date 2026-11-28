@@ -24,7 +24,7 @@ npm install -D rollup-plugin-codefend
 
 ## Usage
 
-### Default options
+### Recommended setup
 
 Add the plugin to your `rollup.config.mjs`. Keep any other plugins and build settings your project needs.
 
@@ -37,13 +37,13 @@ export default {
     file: "dist/bundle.js",
     format: "esm",
   },
-  plugins: [codefend()],
+  plugins: [codefend({ parser: { name: "startWithMAndUnderscore" } })],
 };
 ```
 
 ### Custom options
 
-Customize obfuscation and statistics with the `transformation` and `debug` options:
+Configure parser selection, obfuscation, and statistics with the `parser`, `transformation`, and `debug` options:
 
 ```js
 import { codefend } from "rollup-plugin-codefend";
@@ -56,6 +56,7 @@ export default {
   },
   plugins: [
     codefend({
+      parser: { name: "startWithMAndUnderscore" },
       transformation: {
         // Prefix for generated names.
         prefix: "Ox",
@@ -80,21 +81,34 @@ export default {
 
 `transformation.ignore` contains words to preserve, not file paths or module filters. Statistics are enabled by default; use `debug: { stats: false }` to disable them.
 
-The plugin uses Codefend's `codeOnly` parser. CLI options for copying source files, renaming files and folders, and selecting custom parsers are not exposed. See the [configuration reference](https://codefend.github.io/docs/references/configuration) for transformation details.
+### Parser selection
+
+`parser.name` accepts these two presets:
+
+| Name                      | Selection                                                             |
+| ------------------------- | --------------------------------------------------------------------- |
+| `startWithMAndUnderscore` | Recommended for new projects: explicitly marked `m_` names.           |
+| `codeOnly`                | The existing broader underscore naming rule; retained as the default. |
+
+We recommend `startWithMAndUnderscore` because narrower selection helps leave unrelated names such as `external_value` and `LED_BUILTIN` unchanged. Use lowercase `m_`, followed by an ASCII letter and then letters or digits. For example, `m_Total` and `m_value2` are selected; `m_2total` and `m_total_amount` are excluded.
+
+Omitting `parser`, using `parser: {}`, or selecting `codeOnly` preserves the existing selection behavior. Custom regex lists and other core presets are not accepted by this plugin. Explicit static mappings still apply to their configured literal keys.
+
+CLI settings for source copying and file/folder renaming are separate. See [parser presets](https://codefend.github.io/docs/advanced-usage/parser/presets) and the [configuration reference](https://codefend.github.io/docs/references/configuration).
 
 ### Naming convention
 
-Add a prefix such as `l_` to names you want Codefend to obfuscate:
+Use the recommended `m_` convention for application-owned names whose callers you control:
 
 ```js
-function l_add(l_left, l_right) {
-  return l_left + l_right;
+function m_add(m_left, m_right) {
+  return m_left + m_right;
 }
 
-console.log(l_add(2, 3));
+console.log(m_add(2, 3));
 ```
 
-With default options, Codefend transforms those names:
+Both supported parsers select these `m_` names:
 
 ```js
 function Ox0(Ox1, Ox2) {

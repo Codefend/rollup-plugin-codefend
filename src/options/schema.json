@@ -2,6 +2,16 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
+    "parser": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": ["codeOnly", "startWithMAndUnderscore"]
+        }
+      }
+    },
     "transformation": {
       "type": "object",
       "properties": {

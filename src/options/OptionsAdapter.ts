@@ -5,7 +5,7 @@ import { DEFAULT_PARSER_NAME } from "../data/Constants";
 class OptionsAdapter {
   transform(pluginOptions: IRollupCodefendOptions): IRollupCodefendInternalOptions {
     return {
-      parser: buildParserOptions({ name: DEFAULT_PARSER_NAME }).data!,
+      parser: buildParserOptions({ name: pluginOptions.parser?.name ?? DEFAULT_PARSER_NAME }).data!,
       transformation: buildTransformationOptions(pluginOptions.transformation),
       debug: buildDebugOptions(pluginOptions.debug),
     };
