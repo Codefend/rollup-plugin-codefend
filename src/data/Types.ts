@@ -13,6 +13,7 @@ export type IRollupCodefend = {
   ___options: IRollupCodefendInternalOptions;
 };
 export type IRollupCodefendOptions = {
+  parser?: { name?: "codeOnly" | "startWithMAndUnderscore" };
   transformation?: ICodefendTransformationOptions;
   debug?: IRollupCodefendDebugOptions;
 };

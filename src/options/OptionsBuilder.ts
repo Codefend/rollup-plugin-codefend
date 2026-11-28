@@ -14,7 +14,6 @@ export class OptionsBuilder {
 
   setOptions(pluginOptions: IRollupCodefendOptions): this {
     this.pluginOptions = pluginOptions;
-    this.libraryOptions = OptionsAdapter.transform(pluginOptions);
     return this;
   }
 
@@ -25,6 +24,7 @@ export class OptionsBuilder {
 
   build(): IRollupCodefendInternalOptions {
     OptionsValidator.validateOptions(this.name, this.pluginOptions);
+    this.libraryOptions = OptionsAdapter.transform(this.pluginOptions);
 
     this.additionalIgnoredWords.forEach((word) => {
       this.libraryOptions.transformation?.ignore!.push(word);
